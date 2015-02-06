@@ -11,7 +11,10 @@
         android:text="Orario Giorno"
         android:id="@+id/button"
         android:layout_below="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
+        android:onClick="OnOrarioGiorno"
+        android:layout_alignStart="@+id/button3"
+        android:textStyle="italic"
+        android:layout_alignEnd="@+id/button3" />
 
     <Button
         android:layout_width="wrap_content"
@@ -19,15 +22,17 @@
         android:text="Orario Completo"
         android:id="@+id/button2"
         android:onClick="OnOrarioCompleto"
-        android:layout_marginBottom="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/button3" />
+        android:textStyle="italic"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/button"
+        android:layout_toStartOf="@+id/button" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aggiorna Orario"
         android:id="@+id/button3"
+        android:textStyle="italic"
 
         android:onClick="OnAggiornaOrario"
         android:layout_below="@+id/spinner"
@@ -41,6 +46,8 @@
         android:text="Variazione Orario"
         android:id="@+id/button4"
         android:onClick="popUp"
+        android:textStyle="italic"
+
         android:layout_alignTop="@+id/button2"
         android:layout_toEndOf="@+id/button3" />
 
@@ -50,6 +57,8 @@
         android:id="@+id/spinner"
         android:visibility="visible"
         android:clickable="true"
+        android:textStyle="italic"
+
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
