@@ -106,7 +106,7 @@ public class Activity_OrarioGiorno extends ActionBarActivity {
 
         readString =  readString.replaceAll("\n","");
         readString =  readString.replaceAll("#","\n");
-        String [] element =  readString.split(";");
+        String [] element =  readString.trim().split(";");
             String [] result=new String[12];
         if(element.length>48) {
             for (int i = 1; i < 7; i++) {
