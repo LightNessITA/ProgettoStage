@@ -1,6 +1,7 @@
 package com.example.riccardo.progettoapporario;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -53,7 +54,7 @@ public class Activity_OrarioGiorno extends ActionBarActivity {
 
                 int dayOfWeek = pos;
 
-                ArrayAdapter<String> adaptergrid=new ArrayAdapter<String>(adapter.getContext(),android.R.layout.simple_list_item_1,getOrarioGiorno(dayOfWeek));
+                ArrayAdapter<String> adaptergrid=new ArrayAdapter<String>(adapter.getContext(),R.layout.custom_layout_gridview,R.id.textcustom,getOrarioGiorno(dayOfWeek));
 
                 // sostituiamo ListView con GridView
                 GridView gridView = (GridView) findViewById(R.id.gridView2);
@@ -79,10 +80,11 @@ public class Activity_OrarioGiorno extends ActionBarActivity {
         //inserisco i dati nel grid per il giorno corrente
 
 
-        ArrayAdapter<String> adaptergrid=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,getOrarioGiorno(dayOfWeek));
+        ArrayAdapter<String> adaptergrid=new ArrayAdapter<String>(this,R.layout.custom_layout_gridview,R.id.textcustom,getOrarioGiorno(dayOfWeek));
 
         // sostituiamo ListView con GridView
         GridView gridView = (GridView) findViewById(R.id.gridView2);
+
         gridView.setAdapter(adaptergrid);
     }
 
