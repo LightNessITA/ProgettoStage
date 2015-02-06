@@ -16,10 +16,10 @@
             xmlns:android="http://schemas.android.com/apk/res/android">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="fill_parent">
     <GridView
         android:layout_width="1200px"
-        android:layout_height="900px"
+        android:layout_height="750px"
         android:id="@+id/gridView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
@@ -29,7 +29,9 @@
         android:textAlignment="center"
         android:gravity="fill_vertical"
         android:horizontalSpacing="0dp"
-        android:verticalSpacing="0dp"/>
+        android:verticalSpacing="0dp"
+        android:background="#000000"
+        />
 
     </LinearLayout>
         </ScrollView>

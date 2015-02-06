@@ -13,7 +13,8 @@
         android:textSize="35px"
         android:textStyle="italic"
         android:id="@+id/textcustom"
-
+         android:background="#8CDD81"
+         android:layout_margin="1px"
         />
 
 
