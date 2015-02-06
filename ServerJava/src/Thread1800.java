@@ -104,6 +104,8 @@ public class Thread1800 implements Runnable {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			
 		} catch (InvalidFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -186,8 +188,8 @@ public class Thread1800 implements Runnable {
 				if(inputLine.contains(dacercare)){
 					System.out.println(inputLine);
 					int inizio =inputLine.indexOf(dacercare);
-					int fine =inputLine.indexOf("Variazione di orario del");
-					url = inputLine.substring(inizio+dacercare.length(), fine-3);
+					int fine =inputLine.indexOf(".doc");
+					url = inputLine.substring(inizio+dacercare.length(), fine+4);
 					
 				}
 			}

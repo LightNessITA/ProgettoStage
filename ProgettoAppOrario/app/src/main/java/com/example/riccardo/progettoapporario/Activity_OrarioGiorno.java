@@ -108,16 +108,19 @@ public class Activity_OrarioGiorno extends ActionBarActivity {
         readString =  readString.replaceAll("#","\n");
         String [] element =  readString.split(";");
             String [] result=new String[12];
-        for(int i=1;i<7;i++){
-            String Orario = element[i*7];
-            String MateriaAula = element[day+1+(7*i)];
-            result[contatore]=Orario;
-            contatore++;
-            result[contatore]=MateriaAula;
-            contatore++;
+        if(element.length>48) {
+            for (int i = 1; i < 7; i++) {
+                String Orario = element[i * 7];
+                String MateriaAula = element[day + 1 + (7 * i)];
+                result[contatore] = Orario;
+                contatore++;
+                result[contatore] = MateriaAula;
+                contatore++;
+            }
+
+        }else{
+            result[0]="Problemi con il caricamento del file orario";
         }
-
-
         return result;
 
     }
