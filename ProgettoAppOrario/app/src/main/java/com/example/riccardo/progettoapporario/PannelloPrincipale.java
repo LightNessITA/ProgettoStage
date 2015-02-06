@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -54,6 +55,8 @@ public class PannelloPrincipale extends ActionBarActivity {
 // 3. Get the AlertDialog from create()
         AlertDialog dialog = builder.create();
         dialog.show();
+        Button variazioneorario = (Button) findViewById(R.id.button4);
+        variazioneorario.setEnabled(true);
     }
 
 
@@ -64,6 +67,8 @@ public class PannelloPrincipale extends ActionBarActivity {
                 servermessage,
                 Toast.LENGTH_LONG
         ).show();
+        Button aggiornaeorario = (Button) findViewById(R.id.button3);
+        aggiornaeorario.setEnabled(true);
     }
 
     @Override
@@ -196,6 +201,8 @@ public class PannelloPrincipale extends ActionBarActivity {
 
 
         new Thread(new ClientThreadAggOrario()).start();
+        Button aggiornaeorario = (Button) findViewById(R.id.button3);
+        aggiornaeorario.setEnabled(false);
     }
 
     public void popUp(View v){
@@ -203,8 +210,8 @@ public class PannelloPrincipale extends ActionBarActivity {
         // 1. Instantiate an AlertDialog.Builder with its constructor
 
         new Thread(new ClientThreadVariazioneOrario()).start();
-
-
+        Button variazioneorario = (Button) findViewById(R.id.button4);
+        variazioneorario.setEnabled(false);
     }
 
     public void OnOrarioCompleto(View v){

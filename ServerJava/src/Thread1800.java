@@ -20,6 +20,7 @@ public class Thread1800 implements Runnable {
 		ServerSocket sock;
 		try {
 			while(true) {	
+				
 				sock=new ServerSocket(1800);
 				Socket sock1= sock.accept(); 
 				BufferedReader input=new BufferedReader(new InputStreamReader(sock1.getInputStream()));
@@ -29,31 +30,31 @@ public class Thread1800 implements Runnable {
 				System.out.println("Connessione al server riuscita!");
 
 				//Thread.sleep(2000);
-				
+
 				String clientSentence = input.readLine();
 				System.out.println(clientSentence);
 				String result = docConverter();
-				
+
 				Map<String,String> mappa = Split(result);
-				
-				
+
+
 				if(mappa.containsKey(clientSentence.trim())) {
-					
+
 					String varorario = mappa.get(clientSentence.trim());
 					System.out.println(mappa.get(clientSentence.trim()));
-					
+
 					os.write((varorario+"\n").getBytes());
 					//
 
 				}else{
-					
-					
+
+
 					os.write("Varizione non presente\n".getBytes());
 				}
-				
-				
-				
-				
+
+
+
+
 				//output.write("ciao, sto mandando, questo è il messaggio /n");
 				System.out.println("Ho mandato");
 
@@ -77,7 +78,8 @@ public class Thread1800 implements Runnable {
 		InputStream fis;
 		String extractedText = "Problemi Di Conversione"; 
 		try {
-			URL link = new URL("http://www.istitutofermi.it/wp-content/uploads/2010/05/COM_A_160-var.ora_.doc"); //The file that you want to download
+			String url =DownloadUrl();
+			URL link = new URL(url); //The file that you want to download
 
 			//Code to download
 			InputStream in = new BufferedInputStream(link.openStream());
@@ -89,15 +91,15 @@ public class Thread1800 implements Runnable {
 			POIFSFileSystem fileSystem = new POIFSFileSystem(in);
 			POITextExtractor extractor = ExtractorFactory.createExtractor(fileSystem);
 
-			 extractedText = extractor.getText();
+			extractedText = extractor.getText();
 
 
 
 			System.out.println("Convertito!");
 
 			System.out.println("splitto il file convertito");
-			
-			
+
+
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -161,11 +163,52 @@ public class Thread1800 implements Runnable {
 			e.printStackTrace();
 		}
 		System.out.println(mapHash);
-		
+
 		return mapHash;
 
-		
 
+
+	}
+
+	public static String  DownloadUrl()  {
+		String url="";
+		URL oracle;
+		try {
+			oracle = new URL("http://www.istitutofermi.it");
+
+			BufferedReader in = new BufferedReader(
+					new InputStreamReader(oracle.openStream()));
+
+			String inputLine;
+			while ((inputLine = in.readLine()) != null){
+				
+				String dacercare = "VARIAZIONE ORARIO:<a href=\"";
+				if(inputLine.contains(dacercare)){
+					System.out.println(inputLine);
+					int inizio =inputLine.indexOf(dacercare);
+					int fine =inputLine.indexOf("Variazione di orario del");
+					url = inputLine.substring(inizio+dacercare.length(), fine-3);
+					
+				}
+			}
+			
+			
+			
+			
+			in.close();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+
+		
+		return url;
 	}
 
 
